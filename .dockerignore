@@ -1,0 +1,13 @@
+.appends/
+.git/
+.github/
+bin/run-in-docker.sh
+bin/run-tests-in-docker.sh
+bin/run-tests.sh
+tests/
+.dockerignore
+.gitattributes
+.gitignore
+CODE_OF_CONDUCT.md
+LICENSE
+README.md
