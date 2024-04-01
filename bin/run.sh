@@ -15,4 +15,5 @@
 # Example:
 # ./bin/run.sh two-fer /absolute/path/to/two-fer/solution/folder/ /absolute/path/to/output/directory/
 
+export HOME='/tmp'
 raku bin/run.raku $1 $2 $3
