@@ -1,1 +1,41 @@
-
+RakuAST::StatementList.new(
+  RakuAST::Statement::Expression.new(
+    expression => RakuAST::Module.new(
+      scope => "unit",
+      name  => RakuAST::Name.from-identifier(PLACEHOLDER000),
+      how   => Metamodel::ModuleHOW,
+      body  => RakuAST::Block.new(
+        body => RakuAST::Blockoid.new(
+          RakuAST::StatementList.new(
+            RakuAST::Statement::Expression.new(
+              expression => RakuAST::Sub.new(
+                name   => RakuAST::Name.from-identifier(PLACEHOLDER001),
+                traits => (
+                  RakuAST::Trait::Is.new(
+                    name => RakuAST::Name.from-identifier(PLACEHOLDER002)
+                  ),
+                ),
+                body   => RakuAST::Blockoid.new(
+                  RakuAST::StatementList.new(
+                    RakuAST::Statement::Expression.new(
+                      expression => RakuAST::Call::Name::WithoutParentheses.new(
+                        name => RakuAST::Name.from-identifier(PLACEHOLDER003),
+                        args => RakuAST::ArgList.new(
+                          RakuAST::QuotedString.new(
+                            segments   => (
+                              RakuAST::StrLiteral.new("Hello, World!"),
+                            )
+                          )
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
