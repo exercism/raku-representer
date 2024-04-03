@@ -11,15 +11,14 @@ $output-path.mkdir unless $output-path.d;
 
 say "$slug: creating representation...";
 
-my $ast = $solution-path
-    .add('lib')
-    .dir
-    .first({$slug.lc.subst('-').match(.extension('').basename.lc)})
-    .slurp
-    .AST
-    .raku;
+my $ast = $solution-path\
+    .add(<.meta config.json>)\
+    .slurp\
+    .&from-json<files><solution>
+    .map({$solution-path.add($_).slurp.AST.raku})
+    .join("\n\n"); 
 
-my %mappings = $ast
+my %mapping = $ast
     .lines
     .map({.match(/name \s+ .*? (\".*?\")/)[0] andthen .Str orelse Empty})
     .unique
@@ -27,9 +26,9 @@ my %mappings = $ast
     .map({'PLACEHOLDER%03d'.sprintf(.key) => .value});
 
 for (
-    'mappings.json'      => %mappings.&to-json,
-    'representation.txt' => $ast.trans(%mappings.values => %mappings.keys),
-    'representation.json'=> {:version(1)}.&to-json,
+    'mapping.json'       => %mapping.&to-json(:sorted-keys),
+    'representation.txt' => $ast.trans(%mapping.values => %mapping.keys),
+    'representation.json'=> {:version(1)}.&to-json(:sorted-keys),
 ) {
     $output-path.add(.key).spurt(.value ~ "\n");
 }
