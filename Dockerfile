@@ -1,7 +1,4 @@
-FROM alpine:3.18.3
-
-# TODO: install packages required to run the representer
-RUN apk add --no-cache bash jq
+FROM rakudo-star:2024.02-alpine
 
 WORKDIR /opt/representer
 COPY . .
