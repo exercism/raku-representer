@@ -1,4 +1,4 @@
-FROM rakudo-star:2024.03-alpine
+FROM rakudo-star:2024.04-alpine
 
 WORKDIR /opt/representer
 COPY . .
