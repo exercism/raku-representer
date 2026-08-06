@@ -3,7 +3,6 @@ RakuAST::StatementList.new(
     expression => RakuAST::Module.new(
       scope => "unit",
       name  => RakuAST::Name.from-identifier(PLACEHOLDER000),
-      how   => Metamodel::ModuleHOW,
       body  => RakuAST::Block.new(
         body => RakuAST::Blockoid.new(
           RakuAST::StatementList.new(
